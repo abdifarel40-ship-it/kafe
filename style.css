@@ -1,9 +1,9 @@
 
-/* ========================================
-   1. PENGATURAN DASAR
-   ======================================== */
+/* ==========================================
+   1. WARNA DAN PENGATURAN DASAR
+   ========================================== */
 
-/* Warna utama disimpan sebagai variabel agar mudah diganti */
+/* Variabel warna supaya gampang mengganti tema website */
 :root {
   --green: #285943;
   --green-dark: #1c4232;
@@ -17,12 +17,12 @@
   --radius: 18px;
 }
 
-/* Membuat perhitungan ukuran elemen lebih mudah */
+/* Ukuran elemen lebih mudah dikontrol */
 * {
   box-sizing: border-box;
 }
 
-/* Mengatur tampilan seluruh halaman */
+/* Tampilan umum halaman */
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -31,21 +31,28 @@ body {
   line-height: 1.6;
 }
 
-/* Membuat gambar tidak melebihi ukuran wadahnya */
+/* Membatasi lebar gambar agar tidak berlebihan */
 img {
   display: block;
   max-width: 100%;
 }
 
-/* Mengatur lebar konten agar rapi di tengah */
+/* Membuat input dan tombol mengikuti font website */
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* Konten berada di tengah halaman */
 .container {
   width: min(1100px, calc(100% - 40px));
   margin-inline: auto;
 }
 
-/* ========================================
+/* ==========================================
    2. HEADER DAN LOGO
-   ======================================== */
+   ========================================== */
 
 .header {
   background: var(--white);
@@ -60,6 +67,7 @@ img {
   gap: 16px;
 }
 
+/* Logo MenuKita */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -71,13 +79,14 @@ img {
   letter-spacing: -0.7px;
 }
 
+/* Kotak huruf M pada logo */
 .brand-icon {
   width: 38px;
   height: 38px;
   display: grid;
   place-items: center;
   background: var(--green);
-  color: white;
+  color: var(--white);
   border-radius: 12px;
 }
 
@@ -85,22 +94,24 @@ img {
   color: var(--orange);
 }
 
+/* Tulisan DIGITAL MENU */
 .digital-label {
+  color: var(--muted);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: var(--muted);
 }
 
-/* ========================================
-   3. BAGIAN PEMBUKA
-   ======================================== */
+/* ==========================================
+   3. BAGIAN PEMBUKA WEBSITE
+   ========================================== */
 
 .hero {
   padding-top: 65px;
   padding-bottom: 45px;
 }
 
+/* Tulisan kecil di atas judul */
 .eyebrow {
   margin: 0 0 10px;
   color: var(--orange);
@@ -109,6 +120,7 @@ img {
   letter-spacing: 1.7px;
 }
 
+/* Judul utama */
 .hero h1 {
   max-width: 700px;
   margin: 0;
@@ -117,10 +129,12 @@ img {
   letter-spacing: -2px;
 }
 
+/* Warna titik pada judul */
 .hero h1 span {
   color: var(--orange);
 }
 
+/* Keterangan di bawah judul */
 .hero-description {
   max-width: 560px;
   margin: 18px 0;
@@ -128,6 +142,7 @@ img {
   font-size: 16px;
 }
 
+/* Informasi singkat kafe */
 .cafe-info {
   display: flex;
   flex-wrap: wrap;
@@ -137,15 +152,16 @@ img {
   font-weight: 600;
 }
 
-/* ========================================
-   4. JUDUL BAGIAN MENU
-   ======================================== */
+/* ==========================================
+   4. BAGIAN DAFTAR MENU
+   ========================================== */
 
 .menu-section {
   padding-top: 20px;
   padding-bottom: 75px;
 }
 
+/* Judul dan jumlah menu */
 .section-heading {
   display: flex;
   justify-content: space-between;
@@ -166,21 +182,22 @@ img {
   font-size: 13px;
 }
 
-/* ========================================
-   5. PENCARIAN MENU
-   ======================================== */
+/* ==========================================
+   5. KOLOM PENCARIAN
+   ========================================== */
 
 .search-box {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 0 17px;
   min-height: 54px;
+  padding: 0 17px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 13px;
 }
 
+/* Efek ketika kolom pencarian dipilih */
 .search-box:focus-within {
   border-color: var(--green);
   box-shadow: 0 0 0 3px rgba(40, 89, 67, 0.08);
@@ -198,7 +215,6 @@ img {
   outline: none;
   background: transparent;
   color: var(--text);
-  font: inherit;
   font-size: 14px;
 }
 
@@ -206,9 +222,9 @@ img {
   color: #9a9e99;
 }
 
-/* ========================================
-   6. TOMBOL KATEGORI
-   ======================================== */
+/* ==========================================
+   6. TOMBOL KATEGORI MENU
+   ========================================== */
 
 .category-list {
   display: flex;
@@ -217,6 +233,7 @@ img {
   margin: 18px 0;
 }
 
+/* Bentuk tombol kategori */
 .category-button {
   padding: 9px 16px;
   border: 1px solid var(--border);
@@ -224,11 +241,11 @@ img {
   background: var(--white);
   color: var(--text);
   cursor: pointer;
-  font: inherit;
   font-size: 13px;
   transition: background 0.2s, color 0.2s;
 }
 
+/* Efek saat tombol disentuh atau dipilih */
 .category-button:hover,
 .category-button.active {
   background: var(--green);
@@ -236,9 +253,9 @@ img {
   color: var(--white);
 }
 
-/* ========================================
+/* ==========================================
    7. FILTER HARGA
-   ======================================== */
+   ========================================== */
 
 .price-filter {
   display: flex;
@@ -260,23 +277,21 @@ img {
   border-radius: 10px;
   background: var(--white);
   color: var(--text);
-  font: inherit;
   cursor: pointer;
 }
 
-/* ========================================
-   8. KARTU MENU
-   ======================================== */
+/* ==========================================
+   8. SUSUNAN KARTU MENU
+   ========================================== */
 
+/* Desktop menampilkan tiga kolom */
 .menu-grid {
   display: grid;
-
-  /* Membuat kolom menyesuaikan lebar layar */
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   gap: 22px;
 }
 
+/* Kartu setiap makanan atau minuman */
 .menu-card {
   min-width: 0;
   overflow: hidden;
@@ -286,12 +301,13 @@ img {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Efek kartu ketika diarahkan kursor */
 .menu-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 28px rgba(30, 50, 35, 0.08);
 }
 
-/* Area gambar setiap makanan */
+/* Area foto menu */
 .menu-image-wrap {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -299,13 +315,29 @@ img {
   background: #eeece4;
 }
 
+/* Foto mengisi area gambar tanpa mengubah proporsi */
 .menu-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Label ketersediaan di atas foto */
+/* Pengganti latar jika foto gagal dimuat */
+.menu-image-wrap.image-fallback {
+  display: grid;
+  place-items: center;
+  background: #e8eee7;
+}
+
+.image-fallback::after {
+  content: "Foto menu tidak tersedia";
+  padding: 10px;
+  color: var(--green);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Label status ketersediaan */
 .status-badge {
   position: absolute;
   top: 12px;
@@ -318,15 +350,18 @@ img {
   font-weight: 700;
 }
 
+/* Warna khusus untuk menu yang habis */
 .status-badge.unavailable {
   background: #fbe7e5;
   color: var(--red);
 }
 
+/* Informasi menu di bawah foto */
 .menu-card-body {
   padding: 17px;
 }
 
+/* Nama kategori makanan */
 .menu-category {
   margin: 0 0 5px;
   color: var(--orange);
@@ -336,12 +371,14 @@ img {
   text-transform: uppercase;
 }
 
+/* Nama makanan */
 .menu-name {
   margin: 0;
   font-size: 17px;
   line-height: 1.4;
 }
 
+/* Keterangan makanan */
 .menu-description {
   min-height: 42px;
   margin: 8px 0 16px;
@@ -350,6 +387,7 @@ img {
   line-height: 1.7;
 }
 
+/* Area harga dan keterangan stok */
 .menu-card-footer {
   display: flex;
   flex-wrap: wrap;
@@ -360,26 +398,29 @@ img {
   border-top: 1px solid var(--border);
 }
 
+/* Harga menu */
 .menu-price {
   color: var(--green);
   font-size: 16px;
   font-weight: 800;
 }
 
+/* Status singkat stok */
 .menu-stock {
   color: var(--muted);
   font-size: 11px;
 }
 
-/* ========================================
-   9. JIKA MENU TIDAK DITEMUKAN
-   ======================================== */
+/* ==========================================
+   9. PESAN KETIKA MENU TIDAK DITEMUKAN
+   ========================================== */
 
 .empty-state {
   padding: 50px 15px;
   text-align: center;
 }
 
+/* Pastikan bagian ini tersembunyi ketika tidak diperlukan */
 .empty-state[hidden] {
   display: none;
 }
@@ -398,6 +439,7 @@ img {
   font-size: 14px;
 }
 
+/* Tombol untuk mereset filter */
 .reset-button {
   padding: 11px 17px;
   border: 0;
@@ -408,9 +450,13 @@ img {
   font-weight: 700;
 }
 
-/* ========================================
+.reset-button:hover {
+  background: var(--green-dark);
+}
+
+/* ==========================================
    10. INFORMASI PEMESANAN
-   ======================================== */
+   ========================================== */
 
 .order-info {
   background: #edf1e8;
@@ -435,9 +481,9 @@ img {
   font-size: 50px;
 }
 
-/* ========================================
-   11. FOOTER
-   ======================================== */
+/* ==========================================
+   11. BAGIAN BAWAH WEBSITE
+   ========================================== */
 
 .footer {
   background: var(--white);
@@ -454,11 +500,11 @@ img {
   font-size: 11px;
 }
 
-/* ========================================
-   12. TAMPILAN TABLET DAN HP
-   ======================================== */
+/* ==========================================
+   12. TAMPILAN TABLET
+   ========================================== */
 
-/* Pada tablet, kartu menjadi dua kolom */
+/* Pada layar tablet, tampilkan dua kolom */
 @media (max-width: 800px) {
   .menu-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -470,7 +516,11 @@ img {
   }
 }
 
-/* Pada HP, kartu menjadi satu kolom */
+/* ==========================================
+   13. TAMPILAN HP
+   ========================================== */
+
+/* Mengatur ulang tata letak pada layar kecil */
 @media (max-width: 520px) {
   .container {
     width: calc(100% - 28px);
@@ -507,10 +557,12 @@ img {
     font-size: 24px;
   }
 
+  /* Pada HP, satu kartu memenuhi satu baris */
   .menu-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Foto di sebelah kiri dan informasi di kanan */
   .menu-card {
     display: grid;
     grid-template-columns: 115px minmax(0, 1fr);
@@ -550,7 +602,7 @@ img {
   }
 }
 
-/* Mengurangi animasi bagi pengguna yang memilih
+/* Mengurangi gerakan animasi bagi pengguna yang memilih
    pengaturan gerakan minimal di perangkatnya */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -559,20 +611,4 @@ img {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-
-/* Tampilan pengganti ketika foto gagal dimuat */
-.image-fallback {
-  display: grid;
-  place-items: center;
-  background: #e8eee7;
-}
-
-.image-fallback::after {
-  content: "Foto menu tidak tersedia";
-  padding: 10px;
-  color: #285943;
-  font-size: 12px;
-  text-align: center;
 }
