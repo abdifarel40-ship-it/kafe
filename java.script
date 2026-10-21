@@ -2,11 +2,13 @@
 "use strict";
 
 /* =========================================
-   1. DATA MENU
+   1. DATA MENU KAFE
    ========================================= */
 
-// Data contoh untuk mengisi website.
-// Ganti nama, harga, deskripsi, dan foto sesuai kebutuhan kafe.
+// Semua data makanan dan minuman disimpan di sini.
+// Untuk mengubah harga atau nama menu, edit bagian ini.
+// available: true berarti tersedia, false berarti habis.
+
 const menus = [
   {
     id: 1,
@@ -97,6 +99,81 @@ const menus = [
     description: "Teh lemon segar dengan rasa manis dan asam.",
     image: "https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=700&q=80",
     available: false
+  },
+
+  // MENU TAMBAHAN
+
+  {
+    id: 11,
+    name: "Mie Goreng Jawa",
+    category: "Makanan Berat",
+    price: 16000,
+    description: "Mie goreng dengan bumbu khas Jawa dan sayuran.",
+    image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=80",
+    available: true
+  },
+  {
+    id: 12,
+    name: "Ayam Geprek",
+    category: "Makanan Berat",
+    price: 17000,
+    description: "Ayam renyah dengan sambal pedas dan nasi hangat.",
+    image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=700&q=80",
+    available: true
+  },
+  {
+    id: 13,
+    name: "Tahu Crispy",
+    category: "Camilan",
+    price: 8000,
+    description: "Tahu goreng renyah yang cocok untuk camilan.",
+    image: "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=700&q=80",
+    available: true
+  },
+  {
+    id: 14,
+    name: "Roti Bakar Cokelat",
+    category: "Camilan",
+    price: 12000,
+    description: "Roti bakar hangat dengan isian cokelat manis.",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80",
+    available: true
+  },
+  {
+    id: 15,
+    name: "Risol Mayo",
+    category: "Camilan",
+    price: 10000,
+    description: "Risol renyah dengan isian mayo dan smoked beef.",
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80",
+    available: false
+  },
+  {
+    id: 16,
+    name: "Cokelat Dingin",
+    category: "Minuman",
+    price: 12000,
+    description: "Minuman cokelat dingin dengan rasa manis dan creamy.",
+    image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=80",
+    available: true
+  },
+  {
+    id: 17,
+    name: "Matcha Latte",
+    category: "Minuman",
+    price: 16000,
+    description: "Perpaduan teh matcha dan susu yang lembut.",
+    image: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=700&q=80",
+    available: true
+  },
+  {
+    id: 18,
+    name: "Brownies Cokelat",
+    category: "Dessert",
+    price: 12000,
+    description: "Brownies cokelat lembut sebagai teman minum kopi.",
+    image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80",
+    available: true
   }
 ];
 
@@ -105,7 +182,7 @@ const menus = [
    2. MENGAMBIL ELEMEN HTML
    ========================================= */
 
-// Menghubungkan JavaScript dengan bagian HTML.
+// Menghubungkan JavaScript dengan bagian website.
 const searchInput = document.getElementById("search-input");
 const categoryList = document.getElementById("category-list");
 const maxPriceSelect = document.getElementById("max-price");
@@ -115,15 +192,14 @@ const emptyState = document.getElementById("empty-state");
 const resetButton = document.getElementById("reset-button");
 
 // Kategori yang sedang dipilih.
-// "Semua" berarti menampilkan semua kategori.
 let activeCategory = "Semua";
 
 
 /* =========================================
-   3. FORMAT HARGA
+   3. FORMAT HARGA RUPIAH
    ========================================= */
 
-// Mengubah angka menjadi format rupiah.
+// Mengubah angka menjadi format harga Rupiah.
 // Contoh: 18000 menjadi Rp18.000.
 function formatRupiah(price) {
   return new Intl.NumberFormat("id-ID", {
@@ -138,36 +214,31 @@ function formatRupiah(price) {
    4. MEMBUAT TOMBOL KATEGORI
    ========================================= */
 
+// Kategori dibuat otomatis berdasarkan data menu.
 function renderCategories() {
-  // Mengambil kategori unik dari data menu.
   const categories = [
     "Semua",
-    ...new Set(menus.map((menu) => menu.category))
+    ...new Set(menus.map(menu => menu.category))
   ];
 
-  // Menghapus tombol kategori lama sebelum membuat ulang.
   categoryList.replaceChildren();
 
-  categories.forEach((category) => {
+  categories.forEach(category => {
     const button = document.createElement("button");
 
     button.type = "button";
     button.className = "category-button";
     button.textContent = category;
 
-    // Menandai kategori yang sedang aktif.
-    if (category === activeCategory) {
-      button.classList.add("active");
-      button.setAttribute("aria-pressed", "true");
-    } else {
-      button.setAttribute("aria-pressed", "false");
-    }
+    // Tandai kategori yang sedang aktif.
+    const isActive = category === activeCategory;
 
-    // Saat tombol diklik, kategori berubah.
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+
+    // Ketika kategori diklik, tampilkan menu yang sesuai.
     button.addEventListener("click", () => {
       activeCategory = category;
-
-      // Perbarui tombol dan daftar menu.
       renderCategories();
       filterMenus();
     });
@@ -181,12 +252,12 @@ function renderCategories() {
    5. MEMBUAT KARTU MENU
    ========================================= */
 
+// Membuat tampilan satu menu secara otomatis.
 function createMenuCard(menu) {
-  // Membuat elemen utama kartu.
   const card = document.createElement("article");
   card.className = "menu-card";
 
-  // Area gambar dan label ketersediaan.
+  // Area foto menu.
   const imageWrap = document.createElement("div");
   imageWrap.className = "menu-image-wrap";
 
@@ -196,26 +267,25 @@ function createMenuCard(menu) {
   image.alt = menu.name;
   image.loading = "lazy";
 
-  // Jika gambar gagal dimuat, tampilkan pengganti.
+  // Jika foto gagal dimuat, tampilkan penggantinya.
   image.addEventListener("error", () => {
     image.removeAttribute("src");
     image.alt = "Foto menu tidak tersedia";
     imageWrap.classList.add("image-fallback");
   }, { once: true });
 
+  // Label tersedia atau habis.
   const status = document.createElement("span");
   status.className = "status-badge";
+  status.textContent = menu.available ? "Tersedia" : "Habis";
 
-  if (menu.available) {
-    status.textContent = "Tersedia";
-  } else {
-    status.textContent = "Habis";
+  if (!menu.available) {
     status.classList.add("unavailable");
   }
 
   imageWrap.append(image, status);
 
-  // Bagian teks kartu.
+  // Area informasi makanan.
   const body = document.createElement("div");
   body.className = "menu-card-body";
 
@@ -231,7 +301,7 @@ function createMenuCard(menu) {
   description.className = "menu-description";
   description.textContent = menu.description;
 
-  // Bagian harga dan stok.
+  // Area harga dan ketersediaan.
   const footer = document.createElement("div");
   footer.className = "menu-card-footer";
 
@@ -257,14 +327,14 @@ function createMenuCard(menu) {
    6. MENAMPILKAN DAFTAR MENU
    ========================================= */
 
+// Memasukkan semua kartu menu ke halaman.
 function renderMenus(menuData) {
-  // Kosongkan daftar sebelumnya.
   menuGrid.replaceChildren();
 
-  // Perbarui jumlah hasil yang ditampilkan.
+  // Perbarui jumlah menu yang tampil.
   menuCount.textContent = `${menuData.length} menu`;
 
-  // Tampilkan pesan jika hasil pencarian kosong.
+  // Jika tidak ada hasil, tampilkan pesan.
   if (menuData.length === 0) {
     emptyState.hidden = false;
     return;
@@ -272,10 +342,9 @@ function renderMenus(menuData) {
 
   emptyState.hidden = true;
 
-  // Buat kartu untuk setiap menu.
   const fragment = document.createDocumentFragment();
 
-  menuData.forEach((menu) => {
+  menuData.forEach(menu => {
     fragment.appendChild(createMenuCard(menu));
   });
 
@@ -284,35 +353,36 @@ function renderMenus(menuData) {
 
 
 /* =========================================
-   7. PENCARIAN DAN FILTER HARGA
+   7. PENCARIAN DAN FILTER MENU
    ========================================= */
 
+// Menyaring menu berdasarkan kata, kategori, dan harga.
 function filterMenus() {
-  // Ambil teks pencarian dan ubah menjadi huruf kecil.
-  const keyword = searchInput.value.trim().toLocaleLowerCase("id-ID");
+  const keyword = searchInput.value
+    .trim()
+    .toLocaleLowerCase("id-ID");
 
-  // Baca batas harga yang dipilih pengguna.
   const selectedPrice = maxPriceSelect.value;
 
-  // Filter menu berdasarkan pencarian, kategori, dan harga.
-  const filteredMenus = menus.filter((menu) => {
-    const matchesSearch = (
-      menu.name.toLocaleLowerCase("id-ID").includes(keyword) ||
-      menu.description.toLocaleLowerCase("id-ID").includes(keyword) ||
-      menu.category.toLocaleLowerCase("id-ID").includes(keyword)
-    );
+  const filteredMenus = menus.filter(menu => {
+    // Mencari nama, deskripsi, atau kategori.
+    const searchableText =
+      `${menu.name} ${menu.description} ${menu.category}`
+        .toLocaleLowerCase("id-ID");
 
-    const matchesCategory = (
+    const matchesSearch = searchableText.includes(keyword);
+
+    // Memeriksa apakah kategori cocok.
+    const matchesCategory =
       activeCategory === "Semua" ||
-      menu.category === activeCategory
-    );
+      menu.category === activeCategory;
 
-    const matchesPrice = (
+    // Memeriksa apakah harga sesuai batas.
+    const matchesPrice =
       selectedPrice === "all" ||
-      menu.price <= Number(selectedPrice)
-    );
+      menu.price <= Number(selectedPrice);
 
-    // Menu ditampilkan jika memenuhi semua filter.
+    // Menu tampil jika semua filter cocok.
     return matchesSearch && matchesCategory && matchesPrice;
   });
 
@@ -321,11 +391,11 @@ function filterMenus() {
 
 
 /* =========================================
-   8. MENGATUR TOMBOL RESET
+   8. TOMBOL RESET
    ========================================= */
 
+// Mengembalikan seluruh filter ke kondisi awal.
 function resetFilters() {
-  // Kembalikan semua filter ke keadaan awal.
   searchInput.value = "";
   maxPriceSelect.value = "all";
   activeCategory = "Semua";
@@ -336,16 +406,16 @@ function resetFilters() {
 
 
 /* =========================================
-   9. MENJALANKAN EVENT
+   9. EVENT WEBSITE
    ========================================= */
 
-// Jalankan pencarian setiap kali pengguna mengetik.
+// Pencarian berjalan saat pengguna mengetik.
 searchInput.addEventListener("input", filterMenus);
 
-// Jalankan filter ketika batas harga berubah.
+// Filter harga berjalan ketika pilihan berubah.
 maxPriceSelect.addEventListener("change", filterMenus);
 
-// Reset semua filter ketika tombol diklik.
+// Reset berjalan ketika tombol diklik.
 resetButton.addEventListener("click", resetFilters);
 
 
@@ -353,6 +423,6 @@ resetButton.addEventListener("click", resetFilters);
    10. MENAMPILKAN MENU PERTAMA KALI
    ========================================= */
 
-// Kode ini dijalankan ketika script dimuat.
+// Menampilkan kategori dan 18 menu saat halaman dibuka.
 renderCategories();
 filterMenus();
