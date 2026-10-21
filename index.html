@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Membuat tampilan menyesuaikan layar HP dan komputer -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Deskripsi singkat website -->
+  <meta name="description" content="MenuKita, menu digital kafe yang praktis dan mudah digunakan.">
+
+  <title>MenuKita - Menu Digital Kafe</title>
+
+  <!-- Menghubungkan file desain CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Menghubungkan file JavaScript setelah HTML selesai dibaca -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Bagian identitas kafe -->
+  <header class="header">
+    <div class="container header-content">
+      <a href="#" class="brand" aria-label="MenuKita, halaman utama">
+        <span class="brand-icon">M</span>
+        <span>MenuKita<span class="brand-dot">.</span></span>
+      </a>
+
+      <span class="digital-label">DIGITAL MENU</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Bagian pembuka website -->
+    <section class="hero container">
+      <p class="eyebrow">SELAMAT DATANG DI KAFE SENJA</p>
+
+      <h1>Temukan menu favoritmu<span>.</span></h1>
+
+      <p class="hero-description">
+        Pilih makanan dan minuman favoritmu dengan mudah.
+        Semua menu ada di sini, langsung dari HP kamu.
+      </p>
+
+      <div class="cafe-info">
+        <span>☕ Fresh every day</span>
+        <span>·</span>
+        <span>Menu praktis dan mudah</span>
+      </div>
+    </section>
+
+    <!-- Bagian pencarian dan filter menu -->
+    <section class="container menu-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PILIHAN UNTUKMU</p>
+          <h2>Jelajahi Menu</h2>
+        </div>
+
+        <!-- Jumlah menu diperbarui melalui JavaScript -->
+        <span id="menu-count" class="menu-count">0 menu</span>
+      </div>
+
+      <!-- Kolom untuk mencari nama makanan -->
+      <div class="search-box">
+        <span aria-hidden="true">⌕</span>
+
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Cari nasi goreng, kopi, dan lainnya..."
+          aria-label="Cari nama makanan atau minuman"
+        >
+      </div>
+
+      <!-- Tombol kategori dibuat oleh JavaScript -->
+      <div
+        id="category-list"
+        class="category-list"
+        aria-label="Filter kategori menu"
+      ></div>
+
+      <!-- Filter harga -->
+      <div class="price-filter">
+        <label for="max-price">Batas harga:</label>
+
+        <select id="max-price">
+          <option value="all">Semua harga</option>
+          <option value="10000">Maksimal Rp10.000</option>
+          <option value="15000">Maksimal Rp15.000</option>
+          <option value="20000">Maksimal Rp20.000</option>
+          <option value="25000">Maksimal Rp25.000</option>
+        </select>
+      </div>
+
+      <!-- Daftar kartu makanan akan dimasukkan ke bagian ini -->
+      <div id="menu-grid" class="menu-grid"></div>
+
+      <!-- Pesan jika tidak ada menu yang cocok -->
+      <div id="empty-state" class="empty-state" hidden>
+        <div class="empty-icon">⌕</div>
+        <h3>Menu tidak ditemukan</h3>
+        <p>Coba kata pencarian atau batas harga yang lain.</p>
+        <button id="reset-button" class="reset-button">
+          Tampilkan Semua Menu
+        </button>
+      </div>
+    </section>
+
+    <!-- Informasi cara pemesanan -->
+    <section class="order-info">
+      <div class="container order-content">
+        <div>
+          <p class="eyebrow">SUDAH MENENTUKAN PILIHAN?</p>
+          <h2>Pesan langsung ke pelayan.</h2>
+          <p>
+            Catat menu favoritmu, lalu sampaikan pesanan
+            kepada pelayan kafe.
+          </p>
+        </div>
+
+        <span class="order-icon" aria-hidden="true">☕</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bagian bawah website -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 MenuKita. Dibuat untuk mempermudah melihat menu.</p>
+      <p>Simple menu, happy moments.</p>
+    </div>
+  </footer>
+</body>
+</html>
