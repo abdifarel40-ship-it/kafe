@@ -560,3 +560,19 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Tampilan pengganti ketika foto gagal dimuat */
+.image-fallback {
+  display: grid;
+  place-items: center;
+  background: #e8eee7;
+}
+
+.image-fallback::after {
+  content: "Foto menu tidak tersedia";
+  padding: 10px;
+  color: #285943;
+  font-size: 12px;
+  text-align: center;
+}
