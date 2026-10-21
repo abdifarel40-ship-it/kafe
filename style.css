@@ -1,0 +1,562 @@
+
+/* ========================================
+   1. PENGATURAN DASAR
+   ======================================== */
+
+/* Warna utama disimpan sebagai variabel agar mudah diganti */
+:root {
+  --green: #285943;
+  --green-dark: #1c4232;
+  --cream: #faf8f2;
+  --white: #ffffff;
+  --text: #252c27;
+  --muted: #737b74;
+  --border: #e7e7df;
+  --orange: #d98b45;
+  --red: #b83e36;
+  --radius: 18px;
+}
+
+/* Membuat perhitungan ukuran elemen lebih mudah */
+* {
+  box-sizing: border-box;
+}
+
+/* Mengatur tampilan seluruh halaman */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Membuat gambar tidak melebihi ukuran wadahnya */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Mengatur lebar konten agar rapi di tengah */
+.container {
+  width: min(1100px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+/* ========================================
+   2. HEADER DAN LOGO
+   ======================================== */
+
+.header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+  min-height: 76px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green-dark);
+  font-size: 23px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: -0.7px;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: white;
+  border-radius: 12px;
+}
+
+.brand-dot {
+  color: var(--orange);
+}
+
+.digital-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+
+/* ========================================
+   3. BAGIAN PEMBUKA
+   ======================================== */
+
+.hero {
+  padding-top: 65px;
+  padding-bottom: 45px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.hero h1 {
+  max-width: 700px;
+  margin: 0;
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.15;
+  letter-spacing: -2px;
+}
+
+.hero h1 span {
+  color: var(--orange);
+}
+
+.hero-description {
+  max-width: 560px;
+  margin: 18px 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.cafe-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ========================================
+   4. JUDUL BAGIAN MENU
+   ======================================== */
+
+.menu-section {
+  padding-top: 20px;
+  padding-bottom: 75px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2,
+.order-content h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+.menu-count {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ========================================
+   5. PENCARIAN MENU
+   ======================================== */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 17px;
+  min-height: 54px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+}
+
+.search-box:focus-within {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(40, 89, 67, 0.08);
+}
+
+.search-box > span {
+  color: var(--green);
+  font-size: 27px;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: #9a9e99;
+}
+
+/* ========================================
+   6. TOMBOL KATEGORI
+   ======================================== */
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 18px 0;
+}
+
+.category-button {
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: var(--white);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.category-button:hover,
+.category-button.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
+
+/* ========================================
+   7. FILTER HARGA
+   ======================================== */
+
+.price-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  font-size: 13px;
+}
+
+.price-filter label {
+  font-weight: 700;
+}
+
+.price-filter select {
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ========================================
+   8. KARTU MENU
+   ======================================== */
+
+.menu-grid {
+  display: grid;
+
+  /* Membuat kolom menyesuaikan lebar layar */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+.menu-card {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(30, 50, 35, 0.08);
+}
+
+/* Area gambar setiap makanan */
+.menu-image-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #eeece4;
+}
+
+.menu-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Label ketersediaan di atas foto */
+.status-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 5px 10px;
+  border-radius: 30px;
+  background: #e4f4e9;
+  color: #24633e;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.status-badge.unavailable {
+  background: #fbe7e5;
+  color: var(--red);
+}
+
+.menu-card-body {
+  padding: 17px;
+}
+
+.menu-category {
+  margin: 0 0 5px;
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.menu-name {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.menu-description {
+  min-height: 42px;
+  margin: 8px 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.menu-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-top: 13px;
+  border-top: 1px solid var(--border);
+}
+
+.menu-price {
+  color: var(--green);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.menu-stock {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* ========================================
+   9. JIKA MENU TIDAK DITEMUKAN
+   ======================================== */
+
+.empty-state {
+  padding: 50px 15px;
+  text-align: center;
+}
+
+.empty-state[hidden] {
+  display: none;
+}
+
+.empty-icon {
+  color: var(--green);
+  font-size: 42px;
+}
+
+.empty-state h3 {
+  margin: 5px 0;
+}
+
+.empty-state p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.reset-button {
+  padding: 11px 17px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--green);
+  color: var(--white);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* ========================================
+   10. INFORMASI PEMESANAN
+   ======================================== */
+
+.order-info {
+  background: #edf1e8;
+}
+
+.order-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  padding-top: 38px;
+  padding-bottom: 38px;
+}
+
+.order-content p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.order-icon {
+  font-size: 50px;
+}
+
+/* ========================================
+   11. FOOTER
+   ======================================== */
+
+.footer {
+  background: var(--white);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* ========================================
+   12. TAMPILAN TABLET DAN HP
+   ======================================== */
+
+/* Pada tablet, kartu menjadi dua kolom */
+@media (max-width: 800px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .hero {
+    padding-top: 45px;
+  }
+}
+
+/* Pada HP, kartu menjadi satu kolom */
+@media (max-width: 520px) {
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .header-content {
+    min-height: 65px;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  .digital-label {
+    font-size: 9px;
+    letter-spacing: 0.8px;
+  }
+
+  .hero {
+    padding-top: 38px;
+    padding-bottom: 30px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .section-heading h2,
+  .order-content h2 {
+    font-size: 24px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-card {
+    display: grid;
+    grid-template-columns: 115px minmax(0, 1fr);
+  }
+
+  .menu-image-wrap {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  .menu-card-body {
+    padding: 12px;
+  }
+
+  .menu-name {
+    font-size: 15px;
+  }
+
+  .menu-description {
+    min-height: 0;
+    margin-bottom: 12px;
+  }
+
+  .menu-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .order-icon {
+    font-size: 35px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Mengurangi animasi bagi pengguna yang memilih
+   pengaturan gerakan minimal di perangkatnya */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
